@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Author" content="Xuyl">
+		<link href="css/ui-dialog.css" rel="stylesheet">
+		<script type="text/javascript" src="libs/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/dialog.js"></script>
+		<title>Test Document</title>
+	</head>
+	<body>
+		<button data-event="test">Open Dialog</button>	
+		<button class="test1" data-event="test1">Open Dialog 1 - 1</button>	
+	</body>
+	<script type="text/javascript">
+
+		$('button[data-event=test]').on('click', function () {
+			var d = dialog({
+				title: '消息',
+				content: '风吹起的青色衣衫，夕阳里的温暖容颜，你比以前更加美丽，像盛开的花<br>——许巍《难忘的一天》',
+				okValue: '确定',
+				ok: function () {
+					alert("OK");	
+					},
+				cancelValue: '取消',
+				cancel: function () {
+					alert('你取消了呀');	
+				}
+			});
+
+			d.show();		
+		});
+		
+		
+		$('button[data-event=test1]').on('click', function () {
+			var follow = $(".test1");
+			var d = dialog({
+				align: 'top',
+				content: 'hello world'
+			});
+			d.show(follow);	
+		});	
+		
+		
+		
+	</script>
+</html>
