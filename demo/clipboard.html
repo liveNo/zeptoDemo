@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Author" content="Xuyl">
+		<title>Clipboard</title>
+		<script type="text/javascript" src="../libs/clipboard/clipboard.js"></script>
+	</head>
+	<body>
+		<!-- Target -->
+		<input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
+
+		<!-- Trigger -->
+		<button class="btn" data-clipboard-target="#foo">复制
+		</button>
+	</body>
+</html>
+
+<script type="text/javascript">
+	// 支持浏览器版本：chrome > 42+
+	// firfox > 41+       IE > 9+      Opera > 29+  Safari  None
+	var clipboard = new Clipboard('.btn');
+
+	clipboard.on('success', function(e) {
+		console.info('Action:', e.action);
+		console.info('Text:', e.text);
+		console.info('Trigger:', e.trigger);
+
+		e.clearSelection();
+	});
+
+	clipboard.on('error', function(e) {
+		console.error('Action:', e.action);
+		console.error('Trigger:', e.trigger);
+		console.table(e);
+	});
+
+</script>
